@@ -21,3 +21,11 @@ git log
 To solve error of task running 
 ...
 rm -f .git/index.lock
+
+To make the commit 
+...
+git commit -m "messeages"
+
+To send changes to git 
+...
+git push origin main
