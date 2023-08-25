@@ -29,3 +29,30 @@ git commit -m "messeages"
 To send changes to git 
 ...
 git push origin main
+
+To check remote url
+...
+git remote -v
+
+Docker build
+...
+docker build -t ml-project:latest .
+
+To list docker images
+...
+docker images
+
+Run docker image
+...
+docker run -p 5000:5000 -e PORT=5000 imageid
+
+running docker images
+...
+docker ps
+
+stop docker images
+...
+docker stop c_id
+
+to stop docker container
+
