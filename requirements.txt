@@ -1,2 +1,6 @@
 Flask
 gunicorn
+sklearn
+numpy
+pandas
+pyYAML
