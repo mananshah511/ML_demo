@@ -53,10 +53,11 @@ class Configuration:
 
     def get_data_validation_config(self) -> DataValidationConfig:
         try:
+            logging.info(f"get validation config function started")
             artifact_dir=self.training_pipeline_config.artifact_dir
-            data_validation_artifact_dir=os.path.join(ROOT_DIR,DATA_VALIDATION_ARTIFACT_DIR_KEY,self.time_stamp)
+            data_validation_artifact_dir=os.path.join(artifact_dir,DATA_VALIDATION_ARTIFACT_DIR_KEY,self.time_stamp)
 
-            data_validation_config=self.config_info[DATA_IGENSTION_CONFIG_KEY]
+            data_validation_config=self.config_info[DATA_VALIDATION_CONFIG_KEY]
 
             scheme_file_path=os.path.join(ROOT_DIR,data_validation_config[DATA_VALIDATION_SCHEMA_DIR_KEY],data_validation_config[DATA_VALIDATION_SCHEMA_FILENAME_KEY]
                                           )
