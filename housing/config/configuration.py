@@ -24,7 +24,7 @@ class Configuration:
     def get_data_igestion_config(self) -> DataIngestionConfig:
         try:
             artifact_dir=self.training_pipeline_config.artifact_dir
-            data_igestion_artifact_fact_dir=os.path.join(ROOT_DIR,DATA_IGENSTION_ARTIFACT_DIR_KEY,self.time_stamp)
+            data_igestion_artifact_fact_dir=os.path.join(artifact_dir,DATA_IGENSTION_ARTIFACT_DIR_KEY,self.time_stamp)
             data_igestion_config=self.config_info[DATA_IGENSTION_CONFIG_KEY]
 
             data_igestion_download_url=data_igestion_config[DATA_IGENSTION_DOWNLOAD_URL_KEY]

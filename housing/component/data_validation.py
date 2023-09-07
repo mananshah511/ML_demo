@@ -94,17 +94,9 @@ class DataValidation:
                 logging.info("Test columns are valid")
             else:
                 validation_status = False
-
-
-
-
-
-
-
-
-
         except Exception as e:
             raise HousingException(e,sys) from e
+        
         
     def initiate_data_validation(self)->DataValidationArtifact:
         try:
