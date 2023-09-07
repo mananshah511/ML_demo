@@ -51,7 +51,7 @@ class DataValidation:
         except Exception as e:
             raise HousingException(e,sys) from e
     
-    def schema_validation(self):
+    def schema_validation(self)->bool:
         try:
             validation_status = True
             train_file,test_file=self.get_train_test_data()
@@ -97,15 +97,17 @@ class DataValidation:
         except Exception as e:
             raise HousingException(e,sys) from e
         
+        return validation_status
+        
         
     def initiate_data_validation(self)->DataValidationArtifact:
         try:
             logging.info(f"data validation pipeline started")
             self.get_train_test_data()
             ans = self.check_train_test_dir_exist()
-            self.schema_validation()
+            schme_stutes=self.schema_validation()
             logging.info(f"data validation piepline completed")
-            data_validation_artifact=DataValidationArtifact("True")
+            data_validation_artifact=DataValidationArtifact(schme_stutes)
             return data_validation_artifact
         except Exception as e:
             raise HousingException(e,sys) from e
