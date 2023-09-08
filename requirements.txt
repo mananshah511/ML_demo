@@ -5,3 +5,5 @@ numpy
 pandas
 pyYAML
 six
+evidently==0.2.8
+
