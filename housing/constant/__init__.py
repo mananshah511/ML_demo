@@ -37,3 +37,15 @@ DATA_VALIDATION_SCHEMA_DIR_KEY="schema_dir"
 DATA_VALIDATION_SCHEMA_FILENAME_KEY="schema_file_name"
 DATA_VALIDATION_REPORT_FILE_DIR_KEY="report_file_name"
 DATA_VALIDATION_REPORT_FILE_PAGE_DIR_KEY="report_page_file_name"
+
+#Data transformation related variables
+
+DATA_TRANSFORMATION_CONFIG_KEY="data_transformation_config"
+DATA_TRANSFORMATION_ARTIFACT_DIR_KEY="data_tranformation"
+DATA_TRANSFORMATION_ADD_BEDROOM_KEY="add_bedroom_per_room"
+DATA_TRANSFORMATION_TRANSFORMATION_DIR_KEY="ransformed_dir"
+DATA_TRANSFORMATION_TRAIN_DIR_KEY="transformed_train_dir"
+DATA_TRANSFORMATION_TEST_DIR_KEY="transformed_test_dir"
+DATA_TRANSFORMATION_PREPROCESSING_DIR_KEY="preprocessing_dir"
+DATA_TRANSFORMATION_OBJECT_FILENAME="preprocessed_object_file_name"
+

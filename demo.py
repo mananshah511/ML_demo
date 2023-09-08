@@ -1,5 +1,6 @@
 from housing.pipeline.pipeline import Pipeline
 from housing.config.configuration import Configuration
+from housing.config.configuration import DataTransformationConfig
 import os
 def main():
     pipeline = Pipeline()

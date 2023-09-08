@@ -74,8 +74,34 @@ class Configuration:
         except Exception as e:
             raise HousingException(e,sys) from e
 
-    def get_data_transforamtion_congig(self) -> DataTransformationConfig:
-        pass
+    def get_data_transforamtion_config(self) -> DataTransformationConfig:
+        try:
+            artifact_dir=self.training_pipeline_config.artifact_dir
+            data_transformation_artifact_dir=os.path.join(artifact_dir,DATA_TRANSFORMATION_ARTIFACT_DIR_KEY,self.time_stamp)
+            data_transformation_config=self.config_info[DATA_IGENSTION_CONFIG_KEY]
+
+            data_transformation_dir=os.path.join(artifact_dir,data_transformation_config[DATA_TRANSFORMATION_TRANSFORMATION_DIR_KEY])
+                                                 
+            
+            data_transformation_train_dir=os.path.join(data_transformation_dir,data_transformation_config[DATA_TRANSFORMATION_TRAIN_DIR_KEY]
+                                                       )
+            
+            data_transformation_test_dir=os.path.join(data_transformation_dir,data_transformation_config[DATA_TRANSFORMATION_TEST_DIR_KEY]
+                                                      )
+            
+            add_bedroom_per_room=data_transformation_config[DATA_TRANSFORMATION_ADD_BEDROOM_KEY]
+
+            pre_processed_object_file_path=os.path.join(data_transformation_artifact_dir,data_transformation_config[DATA_TRANSFORMATION_PREPROCESSING_DIR_KEY],
+                                                        data_transformation_config[DATA_TRANSFORMATION_OBJECT_FILENAME])
+            
+            Data_TransformationConfig=DataTransformationConfig(add_bedroom_per_room=add_bedroom_per_room,
+                                                               transformed_train_dir=data_transformation_train_dir,
+                                                               transformed_test_dir=data_transformation_test_dir,
+                                                               preprocessed_object_file_path=pre_processed_object_file_path)
+            
+            return Data_TransformationConfig
+        except Exception as e:
+            raise HousingException(e,sys) from e
 
     def get_model_trainer_config(self) -> ModelTrainerConfig:
         pass
