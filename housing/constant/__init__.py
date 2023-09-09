@@ -43,9 +43,22 @@ DATA_VALIDATION_REPORT_FILE_PAGE_DIR_KEY="report_page_file_name"
 DATA_TRANSFORMATION_CONFIG_KEY="data_transformation_config"
 DATA_TRANSFORMATION_ARTIFACT_DIR_KEY="data_tranformation"
 DATA_TRANSFORMATION_ADD_BEDROOM_KEY="add_bedroom_per_room"
-DATA_TRANSFORMATION_TRANSFORMATION_DIR_KEY="ransformed_dir"
+DATA_TRANSFORMATION_TRANSFORMATION_DIR_KEY="transformed_dir"
 DATA_TRANSFORMATION_TRAIN_DIR_KEY="transformed_train_dir"
 DATA_TRANSFORMATION_TEST_DIR_KEY="transformed_test_dir"
 DATA_TRANSFORMATION_PREPROCESSING_DIR_KEY="preprocessing_dir"
 DATA_TRANSFORMATION_OBJECT_FILENAME="preprocessed_object_file_name"
 
+
+
+COLUMN_TOTAL_ROOMS = "total_rooms"
+COLUMN_POPULATION = "population"
+COLUMN_HOUSEHOLDS = "households"
+COLUMN_TOTAL_BEDROOM = "total_bedrooms"
+DATASET_SCHEMA_COLUMNS_KEY=  "columns"
+
+NUMERICAL_COLUMN_KEY="numerical_columns"
+CATEGORICAL_COLUMN_KEY = "categorical_columns"
+
+
+TARGET_COLUMN_KEY="target_column"

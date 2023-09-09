@@ -6,7 +6,8 @@ from housing.component.data_igestion import DataIgenstion
 from housing.entity.config_entity import DataValidationConfig
 from housing.entity.artifact_entity import DataValidationArtifact
 from housing.component.data_validation import DataValidation
-
+from housing.entity.artifact_entity import DataTranformArtifact
+from housing.component.data_transformation import DataTransformation
 import sys,os
 
 class Pipeline():
@@ -29,6 +30,18 @@ class Pipeline():
             
         except Exception as e:
             raise HousingException(e,sys) from e
+        
+    def start_data_transformation(self,data_igenstion_artifact:DataIgenstionArtifact,data_validatin_artifact:
+                                  DataValidationArtifact)->DataTranformArtifact:
+        try:
+            datatran = DataTransformation(data_transformation_config=self.config.get_data_transforamtion_config(),
+                                          data_igention_artifact=data_igenstion_artifact,
+                                          data_validation_artifact=data_validatin_artifact)
+            return datatran.initiate_data_transformation()
+        except Exception as e:
+            raise HousingException(e,sys) from e
     def run_pipeline(self):
         data_ingestion_artifact = self.start_data_igenstion()
         data_validation_artifact =self.start_data_validation(data_igenstion_artifact=data_ingestion_artifact)
+        data_transform_artifact = self.start_data_transformation(data_validatin_artifact=data_validation_artifact,
+                                                                 data_igenstion_artifact=data_ingestion_artifact)
