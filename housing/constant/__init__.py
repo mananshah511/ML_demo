@@ -62,3 +62,13 @@ CATEGORICAL_COLUMN_KEY = "categorical_columns"
 
 
 TARGET_COLUMN_KEY="target_column"
+
+#model training related variables
+
+MODEL_TRAINER_CONFIG_KEY="model_trainer_config"
+MODEL_TRAINER_ARTIFACT_DIR="model_trainer"
+MODEL_TRAINER_ARTIFACT_TRAINED_MODEL_DIR_KEY="trained_model_dir"
+MODEL_TRAINER_MODEL_FILE_NAME_KEY="model_file_name"
+MODEL_TRAINER_BASE_ACCURACY_KEY="base_accuracy"
+MODEL_TRAINER_CONFIG_DIR_KEY="config"
+MODEL_TRAINER_CONFIG_FILENAME_KEY="model.yaml"
