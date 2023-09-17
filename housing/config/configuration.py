@@ -112,7 +112,7 @@ class Configuration:
             artifact_dir=self.training_pipeline_config.artifact_dir
             model_trainer_config=self.config_info[MODEL_TRAINER_CONFIG_KEY]
 
-            model_trainer_config_artifact_dir=os.path.join(artifact_dir,model_trainer_config[MODEL_TRAINER_ARTIFACT_DIR],self.time_stamp)
+            model_trainer_config_artifact_dir=os.path.join(artifact_dir,MODEL_TRAINER_ARTIFACT_DIR,self.time_stamp)
 
             trained_model_path=os.path.join(model_trainer_config_artifact_dir,
                                             model_trainer_config[MODEL_TRAINER_ARTIFACT_TRAINED_MODEL_DIR_KEY],
@@ -120,7 +120,7 @@ class Configuration:
             
             base_accuracy=model_trainer_config[MODEL_TRAINER_BASE_ACCURACY_KEY]
 
-            config_file_path=os.path.join(artifact_dir,
+            config_file_path=os.path.join(
                                           model_trainer_config[MODEL_TRAINER_CONFIG_DIR_KEY],
                                           model_trainer_config[MODEL_TRAINER_CONFIG_FILENAME_KEY])
             

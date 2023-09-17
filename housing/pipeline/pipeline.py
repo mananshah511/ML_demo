@@ -8,6 +8,9 @@ from housing.entity.artifact_entity import DataValidationArtifact
 from housing.component.data_validation import DataValidation
 from housing.entity.artifact_entity import DataTranformArtifact
 from housing.component.data_transformation import DataTransformation
+from housing.entity.config_entity import ModelTrainerConfig
+from housing.entity.artifact_entity import ModelTrainerArtifact
+from housing.component.model_trainer import ModelTrainer
 import sys,os
 
 class Pipeline():
@@ -40,8 +43,17 @@ class Pipeline():
             return datatran.initiate_data_transformation()
         except Exception as e:
             raise HousingException(e,sys) from e
+    def start_model_training(self,data_transform_artifact:
+                             DataTranformArtifact)->ModelTrainerArtifact:
+        try:
+            model_train = ModelTrainer(model_trainer_config=self.config.get_model_trainer_config(),
+                                       data_transform_artifact=data_transform_artifact)
+            return model_train.initlized_model_trainer()
+        except Exception as e:
+            raise HousingException(e,sys) from e
     def run_pipeline(self):
         data_ingestion_artifact = self.start_data_igenstion()
         data_validation_artifact =self.start_data_validation(data_igenstion_artifact=data_ingestion_artifact)
         data_transform_artifact = self.start_data_transformation(data_validatin_artifact=data_validation_artifact,
                                                                  data_igenstion_artifact=data_ingestion_artifact)
+        model_trainer_artifact = self.start_model_training(data_transform_artifact=data_transform_artifact)
