@@ -34,4 +34,14 @@ def save_object(file_path:str, obj):
         with open(file_path,"wb") as object_file:
             dill.dump(obj, object_file)
     except Exception as e:
-        raise HousingException(e,sys) from e       
+        raise HousingException(e,sys) from e     
+
+def write_yaml_file(file_path:str, data:dict=None):
+    try:
+        file_dir=os.path.dirname(file_path)
+        os.makedirs(file_dir,exist_ok=True)
+        if data is not None:
+            with open(file_path,"w") as yaml_file:
+                yaml.dump(data, yaml_file)
+    except Exception as e:
+        raise HousingException(e,sys) from e  

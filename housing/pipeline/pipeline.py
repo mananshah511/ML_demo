@@ -11,6 +11,7 @@ from housing.component.data_transformation import DataTransformation
 from housing.entity.config_entity import ModelTrainerConfig
 from housing.entity.artifact_entity import ModelTrainerArtifact
 from housing.component.model_trainer import ModelTrainer
+from housing.component.model_evulation import ModelEvulation
 import sys,os
 
 class Pipeline():
@@ -51,9 +52,25 @@ class Pipeline():
             return model_train.initlized_model_trainer()
         except Exception as e:
             raise HousingException(e,sys) from e
+        
+    def start_model_evulation(self,data_valiadtion_artifact : DataValidationArtifact,
+                              data_igenstion_artifact : DataIgenstionArtifact , 
+                              model_training_artifact : ModelTrainerArtifact):
+        try:
+            model_evulation = ModelEvulation(model_evulation_config=self.config.get_model_evulation_config(),
+                                             data_igstion_artifact= data_igenstion_artifact,
+                                             data_validation_artifact= data_valiadtion_artifact,
+                                             model_trainer_artifact= model_training_artifact)
+            return model_evulation.initiate_model_evulation()
+        except Exception as e:
+            raise HousingException(e,sys) from e
+        
     def run_pipeline(self):
         data_ingestion_artifact = self.start_data_igenstion()
         data_validation_artifact =self.start_data_validation(data_igenstion_artifact=data_ingestion_artifact)
         data_transform_artifact = self.start_data_transformation(data_validatin_artifact=data_validation_artifact,
                                                                  data_igenstion_artifact=data_ingestion_artifact)
         model_trainer_artifact = self.start_model_training(data_transform_artifact=data_transform_artifact)
+        model_evulation_artifact = self.start_model_evulation(data_igenstion_artifact=data_ingestion_artifact,
+                                                              data_valiadtion_artifact=data_validation_artifact,
+                                                              model_training_artifact=model_trainer_artifact)

@@ -72,3 +72,16 @@ MODEL_TRAINER_MODEL_FILE_NAME_KEY="model_file_name"
 MODEL_TRAINER_BASE_ACCURACY_KEY="base_accuracy"
 MODEL_TRAINER_CONFIG_DIR_KEY="model_config_dir"
 MODEL_TRAINER_CONFIG_FILENAME_KEY="model_config_file_name"
+
+
+#model evulation realetd variables
+
+MODEL_EVULATiON_CONFIG_KEY="model_evaluation_config"
+MODEL_EVULATION_ARTIFACT_DIR="model_evulation"
+MODEL_EVULATION_FILE_NAME="model_evaluation_file_name"
+
+
+
+BEST_MODEL_KEY = "best_model"
+HISTORY_KEY = "history"
+MODEL_PATH_KEY = "model_path"

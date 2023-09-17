@@ -134,7 +134,23 @@ class Configuration:
             raise HousingException(e,sys) from e
 
     def get_model_evulation_config(self) -> ModelEvaluationConfig:
-        pass
+        try:
+            logging.info("get model evulation config function started")
+            artifact_dir = self.training_pipeline_config.artifact_dir
+
+            model_evulation_config = self.config_info[MODEL_EVULATiON_CONFIG_KEY]
+
+            model_evulation_config_dir = os.path.join(artifact_dir, MODEL_EVULATION_ARTIFACT_DIR, self.time_stamp)
+
+            model_evulation_config_file_dir = os.path.join(artifact_dir, model_evulation_config[MODEL_EVULATION_FILE_NAME])
+
+            model_evulation_config = ModelEvaluationConfig(model_evaluation_file_path=model_evulation_config_file_dir,
+                                                             time_stamp=self.time_stamp)
+            logging.info(f"Model evulation config:{model_evulation_config}")
+            
+            return model_evulation_config
+        except Exception as e:
+            raise HousingException(e,sys) from e
 
     def get_model_pusher_config(self) -> ModelPusherConfig:
         pass
