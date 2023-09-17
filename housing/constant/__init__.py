@@ -81,6 +81,13 @@ MODEL_EVULATION_ARTIFACT_DIR="model_evulation"
 MODEL_EVULATION_FILE_NAME="model_evaluation_file_name"
 
 
+#model pusher related variable
+
+MODEL_PUSHER_CONFIG_KEY="model_pusher_config"
+MODEL_PUSHER_ARTIFACT_DIR="model_pusher"
+MODEL_PUSHER_EXPORT_DIR_KEY="model_export_dir"
+
+
 
 BEST_MODEL_KEY = "best_model"
 HISTORY_KEY = "history"

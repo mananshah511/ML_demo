@@ -16,3 +16,5 @@ ModelTrainerArtifact = namedtuple("ModelTrainerArtifact",
 
 ModelEvulationArtifact = namedtuple("ModelEvulationArtifact",["is_model_accepted", "evaluated_model_path"])
 
+ModelPusherArtifact = namedtuple("ModelPusherArtifact", ["export_dir_path"])
+

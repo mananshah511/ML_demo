@@ -9,9 +9,10 @@ from housing.component.data_validation import DataValidation
 from housing.entity.artifact_entity import DataTranformArtifact
 from housing.component.data_transformation import DataTransformation
 from housing.entity.config_entity import ModelTrainerConfig
-from housing.entity.artifact_entity import ModelTrainerArtifact
+from housing.entity.artifact_entity import ModelTrainerArtifact,ModelEvulationArtifact
 from housing.component.model_trainer import ModelTrainer
 from housing.component.model_evulation import ModelEvulation
+from housing.component.model_pusher import ModelPusher
 import sys,os
 
 class Pipeline():
@@ -65,6 +66,13 @@ class Pipeline():
         except Exception as e:
             raise HousingException(e,sys) from e
         
+    def started_model_pusher(self, model_evualtion_artifact : ModelEvulationArtifact):
+        try:
+            model_pusher = ModelPusher(model_pusher_config= self.config.get_model_pusher_config(),
+                                       model_evulation_artifact=model_evualtion_artifact)
+            return model_pusher.initiate_model_pusher()
+        except Exception as e:
+            raise HousingException(e,sys) from e
     def run_pipeline(self):
         data_ingestion_artifact = self.start_data_igenstion()
         data_validation_artifact =self.start_data_validation(data_igenstion_artifact=data_ingestion_artifact)
@@ -74,3 +82,4 @@ class Pipeline():
         model_evulation_artifact = self.start_model_evulation(data_igenstion_artifact=data_ingestion_artifact,
                                                               data_valiadtion_artifact=data_validation_artifact,
                                                               model_training_artifact=model_trainer_artifact)
+        model_pusher_artifact = self.started_model_pusher(model_evualtion_artifact=model_evulation_artifact)

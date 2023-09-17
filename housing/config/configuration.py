@@ -153,8 +153,20 @@ class Configuration:
             raise HousingException(e,sys) from e
 
     def get_model_pusher_config(self) -> ModelPusherConfig:
-        pass
-    
+        try:
+            logging.info("get model pusher config function started")
+            artifact_dir = self.training_pipeline_config.artifact_dir
+
+            model_pusher_config = self.config_info[MODEL_PUSHER_CONFIG_KEY]
+
+            export_dir = os.path.join(artifact_dir,MODEL_PUSHER_ARTIFACT_DIR,self.time_stamp,
+                                model_pusher_config[MODEL_PUSHER_EXPORT_DIR_KEY])
+            
+            model_pusher_config = ModelPusherConfig(export_dir_path=export_dir)
+            return model_pusher_config
+            logging.info(f"moder pusher config: {model_pusher_config}")
+        except Exception as e:
+            raise HousingException(e,sys) from e
     def get_training_pipeline_config(self) -> TrainingPipelineConfig:
         try:
             training_piepline_config=self.config_info[TRAINING_PIPELINE_CONFIG_KEY]
